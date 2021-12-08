@@ -1,48 +1,18 @@
 {
   "parser": "babel-eslint",
   "rules": {
-    "no-unexpected-multiline": "error",
-    "camelcase": [0],
-    "indent": [
-      2,
-      2,
-      {
-        "SwitchCase": 1
-      }
-    ],
-    "space-before-function-paren": [
-      0,
-      {
-        "anonymous": "always",
-        "named": "never"
-      }
-    ],
-    "no-use-before-define": [2, "nofunc"],
-    // TODO: turn on later
-    "comma-dangle": [0],
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": true
-      }
-    ],
-    "no-underscore-dangle": [0],
-    "func-names": [0],
-    "no-shadow": [0], // TODO: Remove later!
-    "no-param-reassign": 0,
-    "no-console": 0,
-    "consistent-return": 0,
-    "no-mixed-operators": [
-      "error",
-      {
-        "allowSamePrecedence": true
-      }
-    ],
-    "new-cap": ["error", { "newIsCapExceptions": ["model"] }],
-    "no-template-curly-in-string": 0
+    "semi": "off",
+    "max-len": ["error", 120, {"ignoreUrls": true}],
+    "no-plusplus": "off",
+    "no-tabs": "off",
+    "no-alert": "off",
+    "prefer-destructuring": "off",
+    "no-console": "off"
   },
   "env": {
-    "node": true
+    "es6": true,
+    "node": true,
+    "browser": true
   },
   "parserOptions": {
     "ecmaVersion": 6,
