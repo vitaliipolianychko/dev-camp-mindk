@@ -17,7 +17,7 @@
     "express": "^4.17.1"
   },
   "lint-staged": {
-    "*.(js|jsx)": ["npm run lint:fix", "git add"]
+    "*.(js|jsx)": ["npm run lint:fix"]
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
