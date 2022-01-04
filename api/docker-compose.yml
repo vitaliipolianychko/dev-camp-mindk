@@ -5,8 +5,13 @@ services:
   db:
     image: postgres
     restart: always
+    container_name: dev_camp_db
     environment:
       POSTGRES_PASSWORD: ${DB_PASS}
+    volumes:
+      - ./tmp/db_data:/var/lib/postgresql/data
+    ports:
+    - 5432:5432
 
   adminer:
     image: adminer
@@ -20,5 +25,5 @@ services:
     volumes:
     - ./:/src
     ports:
-      - 3030:3030
+      - 4000:4000
     command: npm run dev
