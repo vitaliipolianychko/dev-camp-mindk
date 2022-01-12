@@ -1,7 +1,7 @@
 import React from 'react'
 
 // components
-import HomePage from '../../components/HomePage'
+import Profile from '../../components/Profile'
 
 const HomePageContainer = () => {
   const user = {
@@ -11,7 +11,7 @@ const HomePageContainer = () => {
   }
 
   return (
-    <HomePage user={user}/>
+    <Profile user={user}/>
   )
 }
 
