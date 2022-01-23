@@ -5,7 +5,6 @@ services:
   db:
     image: postgres
     restart: always
-    container_name: dev_camp_db
     environment:
       POSTGRES_PASSWORD: ${DB_PASS}
     volumes:
