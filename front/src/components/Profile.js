@@ -2,10 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Profile = ({ user }) => {
-  const { firstName, lastName, bDay } = user
+
+  const { username } = user
   return (
     <div>
-      My name is {firstName} last name - {lastName}, i was born {bDay}
+      My name is {username}
     </div>
   );
 };

@@ -1,18 +1,25 @@
 import React from 'react'
+import { Link, useParams } from "react-router-dom";
 
 // components
 import Profile from '../../components/Profile'
+import { useQuery } from "react-query";
+import { getCurrentUser } from "../UsersContainer/api/crud";
 
-const HomePageContainer = () => {
-  const user = {
-    firstName: 'Vitalii',
-    lastName: 'Polianychko',
-    bDay: '18-02-1997'
-  }
+const ProfileContainer = () => {
+  const { id } = useParams()
+  const { isLoading, error, data = {} } = useQuery("users/id", () => getCurrentUser(id));
+
+  const { data: arrUser = [] } = data;
+  const [user] = arrUser
+
+  if (isLoading) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
 
   return (
     <Profile user={user}/>
   )
 }
 
-export default HomePageContainer
+export default ProfileContainer
