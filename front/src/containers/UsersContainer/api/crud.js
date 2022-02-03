@@ -6,4 +6,9 @@ export const getUsers = async () => {
 
 export const getCurrentUser = async (id) => {
   return client.get(`/users/${id}`);
-}
+};
+
+export const updateUser = async (id, data) => {
+  return client.put(`/users/${id}`, data);
+};
+
