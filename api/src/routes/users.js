@@ -3,6 +3,8 @@ const express = require("express");
 const router = new express.Router();
 const db = require("../services/db");
 
+const fileMiddleware = require("../../middleware/file");
+
 router.get("/", async (req, res) => {
   const users = await db.select()
     .from("users")
@@ -25,6 +27,21 @@ router.post("/", async (req, res) => {
     .into("users");
   res.status(201)
     .json("User added");
+});
+
+router.post("/:id/avatar", fileMiddleware.single("avatar"), async (req, res) => {
+  try {
+    if (req.file) {
+      const { id } = req.params;
+      await db("users")
+        .where("id", id)
+        .update({ avatar: req.file.path });
+      res.status(200)
+        .json("avatar loaded!!!");
+    }
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 router.put("/:id", async (req, res) => {
