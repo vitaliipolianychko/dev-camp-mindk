@@ -1,14 +1,14 @@
 import React from 'react'
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // components
-import Profile from '../../components/Profile'
+import ProfileForm from '../../Forms/ProfileForm'
 import { useQuery } from "react-query";
 import { getCurrentUser } from "../UsersContainer/api/crud";
 
 const ProfileContainer = () => {
   const { id } = useParams()
-  const { isLoading, error, data = {} } = useQuery("users/id", () => getCurrentUser(id));
+  const { isLoading, error, data = {} } = useQuery("users/:id", () => getCurrentUser(id));
 
   const { data: arrUser = [] } = data;
   const [user] = arrUser
@@ -17,8 +17,17 @@ const ProfileContainer = () => {
 
   if (error) return "An error has occurred: " + error.message;
 
+  const initialValues = {
+    nickname: user.nickname,
+    username: user.username,
+    email: user.email
+  }
+
   return (
-    <Profile user={user}/>
+    <ProfileForm
+      userId={id}
+      initialValues={initialValues}
+    />
   )
 }
 

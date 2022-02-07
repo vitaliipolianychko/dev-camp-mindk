@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 
 // helpers
 import { getArticles } from "./api/crud";
+import { Link } from "react-router-dom";
 
 const ArticlesContainer = () => {
   const { isLoading, error, data = {} } = useQuery("articles", getArticles);
@@ -15,7 +16,9 @@ const ArticlesContainer = () => {
   return (
     <div>
       {articles.map((item, index) => (
-        <p key={index}>{item.title}</p>
+        <li key={index}>
+          <Link to={`/posts/${item.id}`}>{item.title}</Link>
+        </li>
       ))}
     </div>
   );
